@@ -1,28 +1,34 @@
-package banking;
+package banking.exceptions;
 
-public class DepositWithdrawTransferAmountNotPositiveException extends Exception {
+public class DepositWithdrawTransferAmountNotPositiveException extends Exception
+{
 
-	public DepositWithdrawTransferAmountNotPositiveException() {
+	public DepositWithdrawTransferAmountNotPositiveException()
+	{
 		// TODO Auto-generated constructor stub
 	}
 
-	public DepositWithdrawTransferAmountNotPositiveException(String message) {
+	public DepositWithdrawTransferAmountNotPositiveException(String message)
+	{
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
 
-	public DepositWithdrawTransferAmountNotPositiveException(Throwable cause) {
+	public DepositWithdrawTransferAmountNotPositiveException(Throwable cause)
+	{
 		super(cause);
 		// TODO Auto-generated constructor stub
 	}
 
-	public DepositWithdrawTransferAmountNotPositiveException(String message, Throwable cause) {
+	public DepositWithdrawTransferAmountNotPositiveException(String message, Throwable cause)
+	{
 		super(message, cause);
 		// TODO Auto-generated constructor stub
 	}
 
 	public DepositWithdrawTransferAmountNotPositiveException(String message, Throwable cause, boolean enableSuppression,
-			boolean writableStackTrace) {
+			boolean writableStackTrace)
+	{
 		super(message, cause, enableSuppression, writableStackTrace);
 		// TODO Auto-generated constructor stub
 	}

@@ -1,6 +1,10 @@
 package banking;
 
-public class Account {
+import banking.exceptions.DepositWithdrawTransferAmountNotPositiveException;
+import banking.exceptions.InsufficientFundsException;
+
+public class Account
+{
 
 	private static int nextId = 1;
 
@@ -9,68 +13,81 @@ public class Account {
 	private String description;
 
 	// in c# public int id {get;set;}
-	public int getId() {
+	public int getId()
+	{
 		return id;
 	}
 
-	public double getBalance() {
+	public double getBalance()
+	{
 		return balance;
 	}
 
-	private void setBalance(double newBalance) {
+	private void setBalance(double newBalance)
+	{
 		balance = newBalance;
 	}
 
-	public String getDescription() {
+	public String getDescription()
+	{
 		return description;
 	}
 
-	public void setDescription(String newDescription) {
+	public void setDescription(String newDescription)
+	{
 		description = newDescription;
 	}
 
-	public void deposit(double amount) throws DepositWithdrawTransferAmountNotPositiveException {
+	public void deposit(double amount) throws DepositWithdrawTransferAmountNotPositiveException
+	{
 		checkAmountGtZero(amount);
 		setBalance(getBalance() + amount);
 	}
 
-	public void withdraw(double amount) throws DepositWithdrawTransferAmountNotPositiveException,InsufficientFundsException {
+	public void withdraw(double amount)
+			throws DepositWithdrawTransferAmountNotPositiveException, InsufficientFundsException
+	{
 		checkAmountGtZero(amount);
-		if (getBalance() < amount) {
+		if (getBalance() < amount)
+		{
 			throw new InsufficientFundsException("Insufficient funds");
 		}
 		setBalance(getBalance() - amount);
 	}
 
-	private void checkAmountGtZero(double amount) throws DepositWithdrawTransferAmountNotPositiveException {
-		if (amount <= 0) {
+	private void checkAmountGtZero(double amount) throws DepositWithdrawTransferAmountNotPositiveException
+	{
+		if (amount <= 0)
+		{
 			// throw exception
 			throw new DepositWithdrawTransferAmountNotPositiveException("Amount must be positive.");
 		}
 	}
-	
+
 	public boolean transferTo(Account account, double amount) throws DepositWithdrawTransferAmountNotPositiveException
 	{
-		try 
+		try
 		{
 			withdraw(amount);
-		}
-		catch (InsufficientFundsException e) {
+		} catch (InsufficientFundsException e)
+		{
 			return false;
 		}
 		account.deposit(amount);
 		return true;
-		
+
 	}
 
 	// constructors
 	// in c# public Account(string NewDescription) : this()
-	public Account(String newDescription) {
+	public Account(String newDescription)
+	{
 		this();
 		description = newDescription;
 	}
 
-	public Account() {
+	public Account()
+	{
 
 		id = nextId++;
 		balance = 0;
